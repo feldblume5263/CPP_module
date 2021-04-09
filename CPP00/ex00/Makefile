@@ -4,17 +4,17 @@ SRCS		=	megaphone.cpp
 OBJS		=	$(SRCS:.cpp=.o)
 CC			=	clang++
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98
-RM			=	rm -f
 
 $(NAME)		:	$(OBJS)
 				$(CC) $(CFLAGS) $^ -o $@
 
 all			:	$(NAME)
 
-clean		:	$(RM) $(OBJS)
+clean		:
+				rm -f $(OBJS)
 
 fclean		:	clean
-				$(RM) $(NAME)
+			rm -f $(NAME)
 
 re			:	fclean all
 
