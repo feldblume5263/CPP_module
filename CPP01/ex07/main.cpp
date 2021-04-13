@@ -50,19 +50,21 @@ int				main(int argc, char *argv[])
 		return (2);
 	}
 
-	std::ifstream	ifs(filename);
 
-	if (!(ifs.is_open()))
-	{
-		printError(3);
-		return (3);
-	}
 	std::ofstream	ofs(filename + ".replace", std::ofstream::out | std::ofstream::trunc);
 	if (!(ofs.is_open()))
 	{
 		printError(4);
 		return (4);
 	}
+
+	std::ifstream	ifs(filename);
+	if (!(ifs.is_open()))
+	{
+		printError(3);
+		return (3);
+	}
+
 	while (true)
 	{
 		std::string	line;

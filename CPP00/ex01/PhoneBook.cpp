@@ -23,7 +23,15 @@ void				commandSearch(Contact contact[], const int idx)
 			std::cout << idx;
 			std::cout << ")" << std::endl;
 			std::cin >> size;
-			if (size <= idx)
+			if (std::cin.eof())
+				return ;
+			if (std::cin.fail())
+			{
+				std::cin.clear();
+				std::cin.ignore(2147483647, '\n');
+				continue ;
+			}
+			if (size <= idx && size > 0)
 				break ;
 		}
 		if (size != 0)

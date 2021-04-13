@@ -27,7 +27,4 @@ public:
 	void			printContact();
 };
 
-
-
-
 #endif
