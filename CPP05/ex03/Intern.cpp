@@ -19,6 +19,7 @@ Form*						newPresidentialPardon(const std::string& target)
 
 Form*						Intern::makeForm(const std::string& name, const std::string& target) const
 {
+	Form*		(*formGenerator[3])(const std::string&) = {newShrubberyCreation, newRobotomyRequest, newPresidentialPardon};
 	int			idx;
 
 	idx = 0;
@@ -26,18 +27,20 @@ Form*						Intern::makeForm(const std::string& name, const std::string& target) 
 	{
 		if (mForms[idx].compare(name) == 0)
 		{
-			std::cout << "Intern creates <" << name << ">." << std::endl;
-			if (name.compare("Shrubbery creation") == 0)
-				return (newShrubberyCreation(target));
-			else if (name.compare("Robotmy request") == 0)
-				return (newRobotomyRequest(target));
-			else if (name.compare("Presidential pardon") == 0)
-				return (newPresidentialPardon(target));
+			std::cout << "Intern creates <" << name << ">" << std::endl;
+			// if (name.compare("Shrubbery creation") == 0)
+			// 	return (newShrubberyCreation(target));
+			// else if (name.compare("Robotmy request") == 0)
+			// 	return (newRobotomyRequest(target));
+			// else if (name.compare("Presidential pardon") == 0)
+			// 	return (newPresidentialPardon(target));
+			return (formGenerator[idx](target));
 		}
 		idx++;
 	}
 	std::cout << "Intern fails to create <" << name << ">" << std::endl;
 	return (NULL);
+
 }
 
 

@@ -13,7 +13,7 @@ int main(void)
 	rrf = someRandomIntern.makeForm("can you handle this?", "Bender");
 	std::cout << std::string(60, '-') << std::endl;
 
-
+	rrf = someRandomIntern.makeForm("NewRobotMyRequest", "Bender");
 	rrf = someRandomIntern.makeForm("Robotmy request", "Bender");
 	if (rrf)
 		std::cout << *rrf;
