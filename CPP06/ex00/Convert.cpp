@@ -32,7 +32,10 @@ const int&	Convert::GetType(void) const
 
 void		Convert::setType(const std::string& str)
 {
-	std::string		pseudoLiterals[8] = {"inff", "-inff", "+inff", "nanf", "inf", "-inf", "+inf", "nan"};
+	std::string		pseudoLiterals[8] = {"inff", "-inff", "+inff", "nanf", "inf", "-inf", "+inf", "nan"}; // 지금 문제가 되는 것들...
+	// 이들이 오면 무조건 float 랑 double 형은 보장이 된다.
+	// float inff -inff +inff
+	// double nanf inf -inf +inf nan
 
 	for (int i = 0; i < 4; i++)
 	{
@@ -58,6 +61,7 @@ void		Convert::setType(const std::string& str)
 	else
 	{
 		std::size_t	found = str.find_first_not_of("+-0123456789.f");
+		// 가장 빨리 나타나는 것을 찾는다.
 
 		if (found != std::string::npos)
 		{
