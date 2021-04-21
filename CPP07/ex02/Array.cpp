@@ -81,13 +81,13 @@ T&						Array<T>::operator[](unsigned int index)
 
 // 멤버 변수는 const로 쓰는게 좋다.
 // 만약 포인터나 레퍼런스로 반환을 하면 그 주소를 알게 될 경우 역으로 그 값에 접근 당할 수 있기 때문이다. 혹은 중간에 변경될 수도 있다.
-// template<typename T>
-// const T&				Array<T>::operator[](unsigned int index) const
-// {
-// 	if (index >= arrSize)
-// 		throw			SegmentFaultException();
-// 	else
-// 		return (element[index]);
-// }
+template<typename T>
+const T&				Array<T>::operator[](unsigned int index) const
+{
+	if (index >= arrSize)
+		throw			SegmentFaultException();
+	else
+		return (element[index]);
+}
 
 #endif
