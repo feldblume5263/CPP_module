@@ -65,7 +65,7 @@ int					main(void)
 	srand(time(NULL));
 	while (idx < 10)
 	{
-		std::cout << "test" << idx << ": " << std::endl;
+		std::cout << "test" << idx + 1 << ": " << std::endl;
 
 		void* raw = NULL;
 		// std::cout << raw << std::endl;
@@ -76,9 +76,10 @@ int					main(void)
 
 		std::cout << "\ts1: " << data->s1 << std::endl;
 		std::cout << "\t n: " << data->n << std::endl;
-		std::cout << "\ts2: " << data->s1 << std::endl;
+		std::cout << "\ts2: " << data->s2 << std::endl;
+		std::cout << "address key: " << data->s1 << data->n << data->s2 << std::endl << std::endl;
 
-		delete raw;
+		delete reinterpret_cast<char*>(raw);
 		delete data;
 		idx++;
 	}
