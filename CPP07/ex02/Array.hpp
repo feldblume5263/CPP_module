@@ -23,8 +23,6 @@ public:
 
 	T&				operator[](unsigned int index); // 구현에서 예외처리가 반드시 필요
 	const T&		operator[](unsigned int index) const;
-	// operator[] 에서 리턴하는 값이 상수일 수도 있다.
-	// const 클래스를 다루어주기 위해서 필수...
 
 	class			SegmentFaultException : public std::exception
 	{

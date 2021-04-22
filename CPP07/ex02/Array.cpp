@@ -1,10 +1,10 @@
-#ifndef ARRAY_CPP // 이것때문에 날아간 내 3시간..
+#ifndef ARRAY_CPP // 템플릿은 상호참조..!
 # define ARRAY_CPP
 
 #include "Array.hpp"
 #include <iostream>
 // 클래스 템플릿으로부터 객체를 생성할 때에는 꺾쇠괄호(<>) 안에
-// 템플릿에 전달된 인수 타입을 명시해야 함.
+// 템플릿에 전달된 인수 타입을 명시해야 한다.
 template<typename T>
 const char*				Array<T>::SegmentFaultException::what(void) const throw()
 {
@@ -55,7 +55,7 @@ Array<T>&				Array<T>::operator=(const Array& other)
 		return (*this);
 	arrSize = other.arrSize;
 	delete[] element; // 반드시 기존 할당된 부분을 삭제해주어야 함.
-	element = new T[arrSize];
+	element = new T[arrSize]; // free하고 다시 할당 안해주니까 중복 free오류.... 마치 생성자에 문제가 있는것처럼 보인다
 
 	unsigned int idx;
 

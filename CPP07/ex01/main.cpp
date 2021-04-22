@@ -53,6 +53,14 @@ int main(void)
 	std::cout << std::string(60, '-') << std::endl;
 
 
+	//Bounus
+	// iter(stringARR, 5, &is5x<std::string>); // string은 상수와 비교할 수 없음.
+	char		charARR[5] = {'a', 'b', 'c', 'd', 'e'};
+	iter(doubleARR, 5, &is5x<double>);
+	iter(intARR, 5, &is5x<int>);
+	// iter(charARR, 5, &is5x<int>); // char도 마찬가지..! char vs int , char vs const int 모두 다 안됨.
+	iter(boolARR, 2, &is5x<bool>);
+
 	iter(stringARR, 3, &print<std::string>);
 	std::cout << std::endl;
 }
