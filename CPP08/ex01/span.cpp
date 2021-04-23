@@ -69,6 +69,17 @@ unsigned int		span::longestSpan() const
 	if (list.size() < 2)
 		throw span::MaxSizeException();
 	return ((this->largest) - (this->smallest));
+	// 동적 프로그래밍으로 효율성은 위가 훨씬 뛰어나다.
+
+	// 다른 방법 (대부분의 사람들이 이 방법으로 했음.
+	// 이 방법은 sort 함수를 반드시 실행 해야만 하므로 상대적으로 비효율적이다.)
+	//시간 복잡도 무조건 O(n) 이상임...
+
+
+	// std::list<int>  tmp(list);
+
+	// tmp.sort();
+	// return (*(--tmp.end()) - *tmp.begin());
 }
 
 

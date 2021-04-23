@@ -55,3 +55,11 @@ public:
 
 #include "mutantStack.cpp"
 #endif
+
+// const에 대해... 부가 설명
+
+//		typedef typename std::stack<T>::container_type::const_iterator		const_iterator;
+//		typedef typename const std::stack<T>::container_type::iterator		iterator;
+// 이 두개는 다르다.
+// 아래는 ++it가 안되기 때문에 자주 사용하지 않는다. (값을 바꿀 수 없다.)
+// 위는 Const 멤버 함수에서 STL 멤버 변수를 다룰 때 사용된다.

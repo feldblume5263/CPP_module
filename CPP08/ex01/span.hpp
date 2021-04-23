@@ -30,7 +30,7 @@ public:
 	const std::list<int>&	getList() const;
 
 // <1>
-	template<typename InputIterator>
+	template<typename InputIterator> // inputs are container's iterator
 	void	addNumber(InputIterator first, InputIterator last)
 	{
 		if (size < list.size() + (last - first))
