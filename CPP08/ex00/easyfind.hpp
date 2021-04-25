@@ -4,7 +4,6 @@
 
 # include <algorithm>
 
-// int형 '컨테이너'로 가정
 class CantFindException : public std::exception
 {
 	const char* what(void) const throw();
@@ -15,6 +14,7 @@ const char*								CantFindException::what(void) const throw()
 	return ("Can not find it");
 }
 
+// int형 '컨테이너'로 가정
 template<typename T>
 typename T::iterator					easyfind(T& conatiner, int value)
 {

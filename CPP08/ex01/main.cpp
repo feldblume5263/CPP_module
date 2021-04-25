@@ -8,12 +8,14 @@ int main(void)
 	{
 		std::cout << std::string(60, '-') << std::endl;
 		std::cout << "서브젝트에 명시된 테스트, 한개씩 넣어본다." << std::endl;
-		span sp = span(5);
-		sp.addNumber(8);
+		span sp = span(6);
+		sp.addNumber(22);
 		sp.addNumber(3);
 		sp.addNumber(17);
 		sp.addNumber(9);
 		sp.addNumber(17);
+		sp.addNumber(22);
+		sp.printList();
 		std::cout << "Shortest : " << sp.shortestSpan() << std::endl;
 		std::cout << "Longest  : " << sp.longestSpan() << std::endl;
 	}
@@ -39,6 +41,7 @@ int main(void)
 		sp.addNumber(9);
 		sp.addNumber(-2983);
 		sp.addNumber(80);
+		sp.printList();
 		std::cout << "Shortest : " << sp.shortestSpan() << std::endl;
 		std::cout << "Longest  : " << sp.longestSpan() << std::endl;
 	}
@@ -75,6 +78,8 @@ int main(void)
 			std::cout << e.what() << '\n';
 		}
 	}
+
+
 	{
 		try
 		{
@@ -117,7 +122,29 @@ int main(void)
 		{
 			std::cout << e.what() << '\n';
 		}
+	}
 
+
+	{
+		try
+		{
+			std::cout << std::string(60, '-') << std::endl;
+			std::cout << "[랜덤할당, 대입할당] 혼합 테스트" << std::endl;
+			span sp = span(8);
+			sp.addNumber(5);
+			sp.addNumber(3);
+			sp.addNumber(5, 10);
+			sp.printList();
+			std::cout << "Shortest : " << sp.shortestSpan() << std::endl;
+			std::cout << "Longest  : " << sp.longestSpan() << std::endl;
+		}
+		catch(const std::exception& e)
+		{
+			std::cout << e.what() << '\n';
+		}
+	}
+
+	{
 		try
 		{
 			std::cout << std::string(60, '-') << std::endl;

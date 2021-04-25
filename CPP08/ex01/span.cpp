@@ -35,6 +35,7 @@ std::list<int>&				span::getList()
 	return (list);
 }
 
+// 0 ~ max_num 범위 내로 input_size 개수 만큼 랜덤으로 할당
 void					span::addNumber(int input_size, int max_num)
 {
 		if (max_num < 0 || input_size > max_num)

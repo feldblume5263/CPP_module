@@ -4,7 +4,7 @@
 # include <iostream>
 # include <stack>
 
-// 스택은 컨테이너 어댑터 개념으로 반복자 사용x
+// 스택은 컨테이너 어댑터 개념으로 그자체로 반복자 사용x
 // 상속 개념이 아닌 클래스 멤버 변수에 추가. 무조건 list 기반이 아니라, 내가 시용할 함수를 선택할 수 있다.
 template<typename T>
 class					MutantStack : public std::stack<T>
