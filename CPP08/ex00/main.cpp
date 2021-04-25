@@ -43,7 +43,7 @@ int main(void)
 	}
 	{
 		std::set<int>	set; // 이진
-		for (int i = 0; i < 5; i++)
+		for (int i = 5; i > 0; i--) // 거꾸로도 해볼까?
 		{
 			set.insert(i);
 		}

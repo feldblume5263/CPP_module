@@ -2,12 +2,12 @@
 
 span::span(): size(0), largest(0), smallest(0), start(false)
 {
-
+	srand((unsigned int)time(NULL));
 }
 
 span::span(unsigned int n) : size(n), largest(0), smallest(0), start(false)
 {
-
+	srand((unsigned int)time(NULL));
 }
 
 span::~span()
@@ -30,20 +30,61 @@ span&			span::operator=(const span& other)
 	return (*this);
 }
 
-const std::list<int>&		span::getList() const
+std::list<int>&				span::getList()
 {
 	return (list);
 }
 
+void					span::addNumber(int input_size, int max_num)
+{
+		if (max_num < 0 || input_size > max_num)
+		{
+			throw InputBoundsException();
+		}
+		if (size < list.size() + input_size)
+		{
+			throw MaxSizeException();
+		}
+		for (int idx = 0; idx < input_size; idx++)
+		{
+			int value = rand() % (max_num + 1);
+			if (isDup(value) == true)
+			{
+				idx--;
+			}
+			else if (this->start == false)
+			{
+				this->start = true;
+				this->largest = value;
+				this->smallest = value;
+				list.push_back(value);
+			}
+			else
+			{
+				if (value > this->largest)
+					this->largest = value;
+				else if (value < this->smallest)
+					this->smallest = value;
+				list.push_back(value);
+			}
+
+		}
+	}
+
 
 void			span::addNumber(int value)
 {
-	int			listSize;
+	unsigned int		listSize;
 
 	listSize = this->list.size();
 	if (listSize >= this->size)
 	{
 		throw span::MaxSizeException();
+	}
+	else if (isDup(value) == true)
+	{
+		std::cout << value << " is already in (not allocated)" << std::endl;
+		return ;
 	}
 	else
 	{
@@ -124,6 +165,31 @@ unsigned int		span::shortestSpan() const
 	return (shortest);
 }
 
+bool				span::isDup(int value)
+{
+	std::list<int>::iterator found = std::find(list.begin(), list.end(), value);
+
+	if (found == list.end())
+	{
+		return (false);
+	}
+	return (true);
+}
+
+void				span::printList()
+{
+	std::list<int>::iterator it;
+	int		count;
+
+	count = 1;
+	for (it = list.begin(); it != list.end(); it++)
+	{
+
+		std::cout << count << " : " << (*it) << std::endl;
+		count++;
+	}
+}
+
 const char*								span::MaxSizeException::what(void) const throw()
 {
 	return ("Max size exception");
@@ -132,4 +198,9 @@ const char*								span::MaxSizeException::what(void) const throw()
 const char*								span::MinSizeException::what(void) const throw()
 {
 	return ("Min size exception");
+}
+
+const char*								span::InputBoundsException::what(void) const throw()
+{
+	return ("Input Boundary exception");
 }
